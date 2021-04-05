@@ -39,7 +39,6 @@ const Login = () => {
   const dispatch = useDispatch();
 
   const handleRegister = (values) => {
-    console.log("SE REGISTRARON LOS DATOS", values);
     dispatch(loginStart(values));
   };
 

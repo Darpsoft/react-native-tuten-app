@@ -11,7 +11,6 @@ export function* Login({ payload: { email, password } }) {
     yield put(showLoader());
 
     const url = `${Config.URL_API}/rest/user/${email}`;
-    console.log("🚀 ~ file: auth.js ~ line 14 ~ function*Login ~ url", url, Config.getConstants());
     const options = putOptionsWithoutToken({}, "PUT", { App: "APP_BCK", Password: password });
     const requestLogin = yield call(request, url, options);
 

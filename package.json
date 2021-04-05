@@ -12,7 +12,7 @@
     "build:local": "SET ENVFILE=.env.production.local && react-native run-android --variant=release",
     "start:reset": "react-native start --reset-cache",
     "clean": "cd android && ./gradlew clean && cd ..",
-    "reverse:pedro": "adb -s emulator-5554 reverse tcp:8082 tcp:8082",
+    "reverse:pedro": "adb -s ad06160308f124bbc5 reverse tcp:8081 tcp:8081",
     "install:pedro": "SET ENVFILE=.env.development && cd android && ./gradlew.bat app:installDebug -PreactNativeDevServerPort=8082 && cd ..",
     "test": "jest",
     "lint": "eslint .",
@@ -36,6 +36,7 @@
     "react-native-reanimated": "^1.13.2",
     "react-native-safe-area-context": "^3.1.9",
     "react-native-screens": "^2.17.1",
+    "react-native-vector-icons": "^8.1.0",
     "react-redux": "^7.2.2",
     "redux": "^4.0.5",
     "redux-saga": "^1.1.3"

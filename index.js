@@ -9,12 +9,19 @@ import { changeTheme } from "./src/assets/styles/themes";
 import { Provider, useSelector } from "react-redux";
 import reduxStore from "./src/redux";
 
+import AwesomeIcon from "react-native-vector-icons/FontAwesome";
+
 export const storage = reduxStore();
 
 const WithPaper = () => {
   const { theme } = useSelector(({ settings }) => settings);
   return (
-    <PaperProvider theme={changeTheme(theme)}>
+    <PaperProvider
+      settings={{
+        icon: (props) => <AwesomeIcon {...props} />,
+      }}
+      theme={changeTheme(theme)}
+    >
       <App />
     </PaperProvider>
   );

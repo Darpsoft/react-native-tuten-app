@@ -3,7 +3,7 @@ import { Dimensions } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator, CardStyleInterpolators } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { useTheme } from "react-native-paper";
+import { Paragraph, useTheme } from "react-native-paper";
 import "react-native-gesture-handler";
 
 import { useDispatch, useSelector } from "react-redux";
@@ -11,9 +11,12 @@ import { updateReduxAuthStart } from "@redux/actions";
 import { customUseReducer } from "@utils/customHooks";
 import { storage } from "../../index";
 
+import Icon from "react-native-vector-icons/FontAwesome";
+
 var { height } = Dimensions.get("window");
 // Auth
 import Home from "@screens/Home";
+import Setting from "@screens/Setting";
 
 // Inicio
 import Login from "@screens/Login";
@@ -29,6 +32,8 @@ const Tab = createBottomTabNavigator();
 
 export const UserStackScreen = () => {
   const theme = useTheme();
+  const iconProps = { size: 28, style: { marginBottom: -6 } };
+  const labelProps = { fontSize: 13, marginBottom: 6 };
 
   return (
     <Tab.Navigator
@@ -47,10 +52,22 @@ export const UserStackScreen = () => {
         },
       }}
     >
-      <Tab.Screen name="Inicio" component={Home} />
-      <Tab.Screen name="Meses" component={Home} />
-      <Tab.Screen name="Membresia" component={Home} />
-      <Tab.Screen name="Planes" component={Home} />
+      <Tab.Screen
+        name="bookings"
+        component={Home}
+        options={{
+          tabBarLabel: ({ color }) => <Paragraph style={[{ color: color }, labelProps]}>Reservaciones</Paragraph>,
+          tabBarIcon: ({ color }) => <Icon name="home" color={color} {...iconProps} />,
+        }}
+      />
+      <Tab.Screen
+        name="setting"
+        component={Setting}
+        options={{
+          tabBarLabel: ({ color }) => <Paragraph style={[{ color: color }, labelProps]}>Configuración</Paragraph>,
+          tabBarIcon: ({ color }) => <Icon name="cog" color={color} {...iconProps} />,
+        }}
+      />
     </Tab.Navigator>
   );
 };

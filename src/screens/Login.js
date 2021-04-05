@@ -6,6 +6,7 @@ import { Wrapper, Text, ControllerTextInput } from "@components/index";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { loginStart } from "@redux/actions";
+import { useSelector } from "react-redux";
 
 const getInputsForm = ({ control }) => {
   return [
@@ -30,6 +31,7 @@ const getInputsForm = ({ control }) => {
 };
 
 const Login = () => {
+  const { settings } = useSelector((store) => store);
   const theme = useTheme();
   const styles = { ...useStyle(theme), ...useStyleUniversal(theme) };
   const { control, handleSubmit, errors } = useForm();
@@ -62,7 +64,7 @@ const Login = () => {
             />
           ))}
 
-        <Button mode="contained" onPress={handleSubmit(handleRegister)}>
+        <Button mode="outlined" loading={settings.loader} disabled={settings.loader} onPress={handleSubmit(handleRegister)}>
           Iniciar Sesión
         </Button>
       </View>

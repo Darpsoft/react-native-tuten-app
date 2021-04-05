@@ -3,12 +3,13 @@ import { ScrollView, StyleSheet, View } from "react-native";
 import { useTheme } from "react-native-paper";
 import { useStyleUniversal } from "@assets/styles/styles";
 
-export const Wrapper = ({ children, style }) => {
+export const Wrapper = ({ children, style, scrollview = true }) => {
   const theme = useTheme();
   const styles = { ...useStyle(theme), ...useStyleUniversal(theme) };
   return (
     <View style={[styles.containerWrapper, style]}>
-      <ScrollView contentContainerStyle={styles.containerScrollView}>{children}</ScrollView>
+      {scrollview && <ScrollView contentContainerStyle={styles.containerScrollView}>{children}</ScrollView>}
+      {!scrollview && <View style={styles.containerScrollView}>{children}</View>}
     </View>
   );
 };

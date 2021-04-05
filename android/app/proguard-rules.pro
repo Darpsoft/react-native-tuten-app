@@ -8,3 +8,6 @@
 #   http://developer.android.com/guide/developing/tools/proguard.html
 
 # Add any project specific keep options here:
+
+# Fixed package react-native-config
+-keep class com.darpsoft.tuten.BuildConfig { *; }

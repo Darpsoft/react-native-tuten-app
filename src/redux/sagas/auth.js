@@ -5,12 +5,15 @@ import { showLoader, hideLoader, loginSuccess } from "@redux/actions";
 import { LOGIN_START, REGISTER_START, UPDATE_REDUX_AUTH_START } from "@redux/constants";
 import { database } from "@database";
 import Config from "react-native-config";
+import { Alert } from "react-native";
 
 export function* Login({ payload: { email, password } }) {
   try {
     yield put(showLoader());
 
     const url = `${Config.URL_API}/rest/user/${email}`;
+    console.log("🚀 ~ file: auth.js ~ line 14 ~ function*Login ~ url", url);
+    Alert.alert(url);
     const options = putOptionsWithoutToken({}, "PUT", { App: "APP_BCK", Password: password });
     const requestLogin = yield call(request, url, options);
 
@@ -21,6 +24,7 @@ export function* Login({ payload: { email, password } }) {
     // En este caso solo se utilizará en token {sessionTokenBck}
     yield all([put(loginSuccess({ tokenUser: requestLogin.sessionTokenBck, dataUser: { ...requestLogin, userTypeName, app: "APP_BCK" } }))]);
   } catch (err) {
+    Alert.alert(JSON.stringify(err));
     yield showMessageError(err);
   } finally {
     yield put(hideLoader());

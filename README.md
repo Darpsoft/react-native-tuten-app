@@ -2,6 +2,7 @@
 
 _Proyecto pequeño con inicio de sesión, con datos persistente, se puede visualizar una lista de reservaciones, también posee filtros para los datos obtenidos mediante el endpoint proporcionado, tiene validación de formulario, flatlist implementado para actualación de datos con RefreshControl, también se puede cerrar sesión._
 
+> **Importante mencionar** que la aplicación ya viene habilitada con **ProGuard** para disminuir el peso de la aplicación y ofuscación, también tiene habilitado **Hermes** para mejorar las cargas entre pantallas y bajar el consumo de la memoria Ram.
 
 ## Demo de la aplicación 📌
 _Si deseas ver la aplicación, puedes ingresar al siguiente link_
